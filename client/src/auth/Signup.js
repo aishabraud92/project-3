@@ -7,6 +7,7 @@ class Signup extends Component {
     super(props)
     this.state = {
       name: '',
+      username: '',
       email: '',
       password: ''
     }
@@ -14,6 +15,9 @@ class Signup extends Component {
 
   handleNameChange = (e) => {
     this.setState({name: e.target.value})
+  }
+  handleUsernameChange = (e) => {
+    this.setState({username: e.target.value})
   }
   handleEmailChange = (e) => {
     this.setState({email: e.target.value})
@@ -26,6 +30,7 @@ class Signup extends Component {
     e.preventDefault();
     axios.post('/auth/signup', {
       name: this.state.name,
+      username: this.state.username,
       email: this.state.email,
       password: this.state.password
     }).then(result => {
@@ -49,6 +54,12 @@ class Signup extends Component {
                        placeholder="What is your first name?"
                        value={this.state.name}
                        onChange={this.handleNameChange} />
+                </div>
+                <div>
+                  <input name="Username"
+                        placeholder="Choose a username"
+                        value={this.state.username}
+                        onChange={this.handleUsernameChange} />
                 </div>
                 <div>
                   <input name="Email"

@@ -18,7 +18,8 @@ class AddItem extends Component {
       console.log(this.state.itemName + " submitted from form.");
       axios.post('/items/dashboard/inventory', {
         itemName: this.state.itemName,
-        userId: this.props.user.id
+        userId: this.props.user.id,
+        username: this.props.user.username
       });
     }
 

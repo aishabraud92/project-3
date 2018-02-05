@@ -43,15 +43,15 @@ router.get("/dashboard/inventory", function(req, res, next) {
 	});
 });
 
-// // GET - render all items besides current user's items on available page
-// router.get("dashboard/all", function(req, res, next) {
-// 	Item.find({
-// 		ownerId: {$not: req.body.user.id}
-// 	}).then(function(items) {
-// 		console.log(items);
-// 		res.render("dashboard/all", {items: items});
-// 	});
-// });
+// GET - render all items besides current user's items on available page
+router.get("dashboard/all", function(req, res, next) {
+	Item.find({
+		ownerId: {$not: req.body.user.id}
+	}).then(function(items) {
+		console.log(items);
+		res.render("dashboard/all", {items: items});
+	});
+});
 
 // // POST - add other user object/document to requests array in corresponding item object/document
 // router.post("/dashboard/all", function(req, res, next) {
