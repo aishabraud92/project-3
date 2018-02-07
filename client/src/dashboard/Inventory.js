@@ -3,29 +3,55 @@ import AddItem from './AddItem';
 
 
 class Inventory extends Component {
-	render() {
-		return (
-			<div>
-				<AddItem user={this.props.user} />
-				<div>
-					<h1>Inventory</h1>
-					<div>
-						<h2>Items you have to lend out.</h2>
-						<div className="items">
-							<h3>Item</h3>
-							<h3>Item</h3>
-							<h3>Item</h3>
-							<h3>Item</h3>
-							<h3>Item</h3>
-							<h3>Item</h3>
-							<h3>Item</h3>
-							<h3>Item</h3>
-						</div>
-					</div>
-				</div>
-			</div>
-		);
-	}
-};
+	constructor(props) {
+      super(props);
+      this.state = {
+        item: ''
+      }
+    }
+			// Class to represent a row in the grid
+		function Inventory(name, initialItem) {
+		    const row = this;
+		    row.itemName = name;
+		    row.items = ko.observable(initialItem);
+
+		// Overall viewmodel for this screen, along with initial state
+		function InventoryViewModel() {
+		    const self = this;
+
+		    // Non-editable catalog data - would come from the server
+		    row.availableItems = [{ itemName: "" }];
+
+
+		    // Operations
+		    row.addItem = function () {
+		        row.item.push(new Inventory("", self.availableItems[0]));
+		    };
+		    row.removeItem = function (item) {
+		        row.items.remove(item);
+		    };
+		}
+
+		ko.applyBindings(new InventoryViewModel());
+
+		render() {
+			return (
+				<h2>Your Inventory (<span data-bind="text: items().length"></span>)</h2>
+
+				<table>
+				    <thead><tr>
+				        <th>Inventory</th><th>Item</th><th>Amount</th><th></th>
+				    </tr></thead>
+				    <tbody data-bind="foreach: item">
+				        <tr>
+				            <td><input data-bind="value: name" /></td>
+				            <td><select data-bind="options: $root.availableItems, value: item, optionsText: 'itemName'"></select></td>
+				            <td data-bind="text: formattedValue"></td>
+				            <td><a href="#" data-bind="click: $root.removeItem">Remove</a></td>
+				        </tr>
+				    </tbody>
+				</table>
+
+				<button data-bind="click: addItem, enable: items().length < 5">Add To Inventory</button>
 
 export default Inventory;

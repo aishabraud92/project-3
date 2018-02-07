@@ -88,8 +88,7 @@ a:hover {
   border-radius: 2px;
   float: right;
 }
-<<<<<<< HEAD
-=======
+
 
 /* DEFAULT STYLES FROM CREATE REACT APP MODULE */
 .App {
@@ -106,10 +105,9 @@ a:hover {
   height: 21px;
   padding: 10px;
   text-decoration: none;
-  color: white;
+  color: blue;
 }
 
 .App-intro {
-  font-size: large;
+  font-size: small;
 }
->>>>>>> 357e8ce203006ecfd045a8399e3da8fc9b326c91

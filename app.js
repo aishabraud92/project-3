@@ -28,5 +28,11 @@ app.use('/items', require('./routes/items'));
 app.get('*', function(req, res, next) {
 	res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
 });
+app.post('/item/items', function(req, res){
+  var newItem = new db.Item(req.body);
+  newItem.save(function handleDBItemSaved(err, savedItem){
+
+  });
+});
 
 module.exports = app;
