@@ -3,7 +3,7 @@ import AddItem from './AddItem';
 
 
 class Inventory extends Component {
-<<<<<<< HEAD
+
 	constructor(props) {
       super(props);
       this.state = {
@@ -55,10 +55,8 @@ class Inventory extends Component {
 
 				<button data-bind="click: addItem, enable: items().length < 5">Add To Inventory</button>
 
-export default Inventory;
-=======
-	
-export default Inventory;
 
-	
->>>>>>> 64d4c984a080f4e32cb254ae3c5d4a950e67d6d0
+
+
+
+export default Inventory;
