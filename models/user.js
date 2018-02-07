@@ -9,6 +9,13 @@ var userSchema = new Schema({
     minlength: 1,
     maxlength: 99
   },
+  username: {
+    type: String,
+    required: true,
+    unique: true,
+    minlength: 1,
+    maxlength: 99
+  },
   email: { // TODO: Need to add email validation
     type: String,
     required: true,
@@ -29,8 +36,9 @@ userSchema.set('toJSON', {
   transform: function(doc, ret, options) {
     var returnJson = {
       id: ret._id,
-      email: ret.email,
-      name: ret.name
+      name: ret.name,
+      username: ret.username,
+      email: ret.email
     };
     return returnJson;
   }

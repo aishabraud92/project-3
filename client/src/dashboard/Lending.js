@@ -58,3 +58,7 @@ class Lending extends Component {
 
 
 export default Lending;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 64d4c984a080f4e32cb254ae3c5d4a950e67d6d0

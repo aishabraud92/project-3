@@ -10,7 +10,10 @@ class All extends Component {
     }
 
     render() {
+
       const { User, items } = this.props;
+
+
       if (!user) {
         return (
           <div> Welcome </div>
@@ -19,6 +22,7 @@ class All extends Component {
       return (
         <div className="main-component">
           <div className="container">
+
             <form className="form-inline">
               <label htmlFor="title" className="control-label">
                 <h4>Available</h4></label>
@@ -26,6 +30,14 @@ class All extends Component {
             </form>
             <div className="row">
               { lendList && isLending.length > 0 && lending.map(item =>
+
+            //<form className="form-inline">
+              //<label htmlFor="title" className="control-label">
+                <h4>Available</h4></label>
+              //<input type="text" className="form-control input-sm pull-right" placeholder="Search" />
+            //</form>
+            <div className="row">
+              { lendList && lending.length > 0 && lending.map(item =>
                 (<div key={`lending-${item.id}`} className="col-xs-12 col-sm-6 col-md-4">
                     </div>
                       </div>
@@ -41,6 +53,14 @@ class All extends Component {
               </form>
             <div className="row">
           { borrowList && isBorrowing.length > 0 && isBorrowing.map(item =>
+
+              //<form className="form-inline">
+                //<label htmlFor="title" className="control-label">
+                  //<h4>Lending</h4></label>
+                //<input type="text" className="form-control input-sm pull-right" placeholder="Search" />
+              //</form>
+            <div className="row">
+          { borrowList && borrowing.length > 0 && borrowing.map(item =>
       (<div key={`Items-${item.id}`} className="col-xs-12 col-sm-6 col-md-4">
         <div>
           <li className="pull-right">

@@ -7,22 +7,37 @@ var userSchema = mongoose.model('User').Schema;
 var itemSchema = new Schema({
 	itemName: {
 		type: String,
-		required: true
+		required: true,
+		minlength: 1,
+		maxlength: 99
 	},
 	ownerId: {
 		type: Schema.Types.ObjectId,
-		ref: 'User',
-		required: true
+		required: true,
+		ref: 'User'
 	},
-	isBorrowed: [{
-		borrowerId: {
-			type: String
-		},
-		borrowerTrue: {
+	ownerUsername: {
+		type: String,
+		required: true,
+		ref: 'User'
+	},
+	requests: [{
+		username: String
+	}],
+	isBorrowed: {
+		type: Boolean,
+		default: false
+	},
+	borrower: {
+		username: {
 			type: String,
-			default: "borrow"
+			ref: 'User'
+		},
+		isFinished: {
+			type: Boolean,
+			default: false
 		}
-	}]
+	}
 });
 
 var Item = mongoose.model('Item', itemSchema);
